@@ -25,7 +25,7 @@ class NewVisitorTest(LiveServerTestCase):
         # 웹 페이지 타이틀과 헤더가 'To-Do'를 표시하고 있다
         self.assertIn('To-Do', self.browser.title)
         header_text = self.browser.find_element_by_tag_name('h1').text
-        self.assertIn('To-Do', header_text)
+        self.assertIn('작업 목록 시작', header_text)
 
         # 그녀는 바로 작업을 추가하기로 한다
         inputbox = self.browser.find_element_by_id('id_new_item')
@@ -42,7 +42,7 @@ class NewVisitorTest(LiveServerTestCase):
         # "1: 공작깃털 사기" 아이템이 추가된다
         inputbox.send_keys(Keys.ENTER)
         edith_list_url = self.browser.current_url
-        self.asserRegx(edith_list_url, '/lists/.+')
+        self.assertRegex(edith_list_url, '/lists/.+')
         self.check_for_row_in_list_table('1: 공작깃털 사기')
     
         # 추가 아이템을 입력할 수 있는 여분의 텍스트 상자가 존재한다.
@@ -78,7 +78,7 @@ class NewVisitorTest(LiveServerTestCase):
 
         # 프란시스가 전용 URL을 취득한다
         francis_list_url = self.browser.current_url
-        self.asserRegx(francis_list_url, '/lists/.+')
+        self.assertRegex(francis_list_url, '/lists/.+')
         self.assertNotEqual(francis_list_url, edith_list_url)
 
         # 에디스가 입력한 흔적이 없다는 것을 다시 확인한다
