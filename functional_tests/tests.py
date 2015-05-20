@@ -93,6 +93,4 @@ class NewVisitorTest(LiveServerTestCase):
         # 이때 URL에 대한 설명도 함께 제공된다
         
 
-        self.fail('Finish the test!')
-
         # 만족하고 잠자리에 든다
